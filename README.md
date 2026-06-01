@@ -67,6 +67,25 @@ docker --version
 ```bash
 sudo docker run hello-world
 ```
+## Install XAMPP
+
+```bash
+wget https://www.apachefriends.org/xampp-files/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
+chmod +x xampp-linux-x64-8.2.12-0-installer.run
+sudo ./xampp-linux-x64-8.2.12-0-installer.run
+```
+
+## Start XAMPP
+
+```bash
+sudo /opt/lampp/lampp start
+```
+
+## Remove XAMPP
+
+```bash
+sudo rm -rf /opt/lampp
+```
 
 ## Linux Folder & File Commands
 
