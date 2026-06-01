@@ -40,6 +40,122 @@ sudo apt update && sudo snap install telegram-desktop
 
 ---
 
+# 🚀 Programming Languages & Package Managers
+
+## Install Node.js + npm
+
+```bash
+sudo apt update && sudo apt install nodejs npm -y
+```
+
+### Check Version
+
+```bash
+node -v
+npm -v
+```
+
+
+## Install PNPM
+
+```bash
+sudo npm install -g pnpm
+```
+
+### Check Version
+
+```bash
+pnpm -v
+```
+
+---
+
+## Install Python + pip
+
+```bash
+sudo apt update && sudo apt install python3 python3-pip -y
+```
+
+### Check Version
+
+```bash
+python3 --version
+pip3 --version
+```
+
+---
+
+## Install PHP
+
+```bash
+sudo apt update && sudo apt install php -y
+```
+
+### Check Version
+
+```bash
+php -v
+```
+
+---
+
+## Install Composer
+
+```bash
+sudo apt update && sudo apt install composer -y
+```
+---
+### Check Version
+
+```bash
+composer --version
+```
+
+---
+
+## Install Java (OpenJDK)
+
+```bash
+sudo apt update && sudo apt install openjdk-21-jdk -y
+```
+
+### Check Version
+
+```bash
+java --version
+javac --version
+```
+
+---
+
+## Install Rust
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### Check Version
+
+```bash
+rustc --version
+cargo --version
+```
+
+---
+
+## Install Flutter
+
+```bash
+sudo snap install flutter --classic
+```
+
+### Check Installation
+
+```bash
+flutter doctor
+```
+---
+
 # 🔒 VPN & Network
 
 ## Install OpenVPN
