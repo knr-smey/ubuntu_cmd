@@ -67,24 +67,39 @@ docker --version
 ```bash
 sudo docker run hello-world
 ```
-## Install XAMPP
+## Install Apache, PHP, MySQL
 
 ```bash
-wget https://www.apachefriends.org/xampp-files/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
-chmod +x xampp-linux-x64-8.2.12-0-installer.run
-sudo ./xampp-linux-x64-8.2.12-0-installer.run
+sudo apt update
+sudo apt install apache2 php mysql-server -y
 ```
 
-## Start XAMPP
+## Start Services
 
 ```bash
-sudo /opt/lampp/lampp start
+sudo systemctl start apache2
+sudo systemctl start mysql
 ```
 
-## Remove XAMPP
+## Enable on Boot
 
 ```bash
-sudo rm -rf /opt/lampp
+sudo systemctl enable apache2
+sudo systemctl enable mysql
+```
+
+## Check Status
+
+```bash
+sudo systemctl status apache2
+sudo systemctl status mysql
+```
+
+## Remove Apache, PHP, MySQL
+
+```bash
+sudo apt remove apache2 php mysql-server -y
+sudo apt autoremove -y
 ```
 
 ## Linux Folder & File Commands
