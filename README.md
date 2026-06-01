@@ -43,6 +43,8 @@ code --version
 ```bash
 sudo snap remove code
 ```
+---
+
 ## Install pgAdmin 4 (Local Machine)
 
 ### Install Required Packages
