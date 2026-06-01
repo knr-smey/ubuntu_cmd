@@ -1,3 +1,5 @@
+# Docker-Setup.md
+
 # 🐳 Docker Setup Guide
 
 A collection of Docker commands and Docker Compose templates for running databases, applications, and development environments.
@@ -5,7 +7,7 @@ A collection of Docker commands and Docker Compose templates for running databas
 ## 📋 Table of Contents
 
 * Docker Installation
-* Docker Compose
+* Docker Network
 * PostgreSQL
 * pgAdmin
 * MySQL
@@ -16,7 +18,6 @@ A collection of Docker commands and Docker Compose templates for running databas
 * Redis Insight
 * Laravel
 * Node.js
-* NestJS
 * Rust
 * Nginx
 * Useful Commands
@@ -39,20 +40,45 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
-## Check Version
+## Check Docker
 
 ```bash
 docker --version
-docker compose version
+docker ps
+```
+
+---
+
+# 🌐 Docker Network
+
+## Create Custom Network
+
+```bash
+docker network create pg-network
+```
+
+## List Networks
+
+```bash
+docker network ls
+```
+
+## Inspect Network
+
+```bash
+docker network inspect pg-network
 ```
 
 ---
 
 # 🐘 PostgreSQL
 
+## Run PostgreSQL
+
 ```bash
 docker run -d \
-  --name postgres17 \
+  --name postgres \
+  --network pg-network \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=root \
   -e POSTGRES_DB=appdb \
@@ -60,28 +86,70 @@ docker run -d \
   postgres:17
 ```
 
+## Connect PostgreSQL Shell
+
+```bash
+docker exec -it postgres psql -U postgres
+```
+
+## Stop PostgreSQL
+
+```bash
+docker stop postgres
+```
+
+## Remove PostgreSQL
+
+```bash
+docker rm -f postgres
+```
+
 ---
 
 # 🔧 pgAdmin
 
+## Run pgAdmin
+
 ```bash
 docker run -d \
   --name pgadmin \
-  -p 5050:80 \
+  --network pg-network \
   -e PGADMIN_DEFAULT_EMAIL=admin@example.com \
   -e PGADMIN_DEFAULT_PASSWORD=admin123 \
+  -p 5050:80 \
   dpage/pgadmin4
 ```
 
-Access:
+## Access pgAdmin
 
 ```text
 http://localhost:5050
 ```
 
+### Login
+
+```text
+Email: admin@example.com
+Password: admin123
+```
+
+### Add PostgreSQL Server
+
+```text
+Name: Local PostgreSQL
+
+Host: postgres
+Port: 5432
+Database: postgres
+Username: postgres
+Password: root
+```
+
 ---
 
 # 🐬 MySQL
+
+## Run MySQL
 
 ```bash
 docker run -d \
@@ -91,9 +159,17 @@ docker run -d \
   mysql:8
 ```
 
+## Connect MySQL
+
+```bash
+docker exec -it mysql8 mysql -u root -p
+```
+
 ---
 
 # 🌐 phpMyAdmin
+
+## Run phpMyAdmin
 
 ```bash
 docker run -d \
@@ -103,9 +179,17 @@ docker run -d \
   phpmyadmin
 ```
 
+## Access phpMyAdmin
+
+```text
+http://localhost:8080
+```
+
 ---
 
 # 🍃 MongoDB
+
+## Run MongoDB
 
 ```bash
 docker run -d \
@@ -118,6 +202,8 @@ docker run -d \
 
 # 🔍 Mongo Express
 
+## Run Mongo Express
+
 ```bash
 docker run -d \
   --name mongo-express \
@@ -126,9 +212,17 @@ docker run -d \
   mongo-express
 ```
 
+## Access Mongo Express
+
+```text
+http://localhost:8081
+```
+
 ---
 
 # ⚡ Redis
+
+## Run Redis
 
 ```bash
 docker run -d \
@@ -141,6 +235,8 @@ docker run -d \
 
 # 📊 Redis Insight
 
+## Run Redis Insight
+
 ```bash
 docker run -d \
   --name redisinsight \
@@ -148,33 +244,65 @@ docker run -d \
   redis/redisinsight
 ```
 
+## Access Redis Insight
+
+```text
+http://localhost:5540
+```
+
 ---
 
 # 🚀 Laravel
 
+## Start Laravel Containers
+
 ```bash
 docker compose up -d
+```
+
+## Stop Laravel Containers
+
+```bash
+docker compose down
 ```
 
 ---
 
 # 🟢 Node.js
 
+## Check Node.js Version
+
 ```bash
 docker run --rm node:22 node -v
+```
+
+## Open Node.js Container
+
+```bash
+docker run -it --rm node:22 bash
 ```
 
 ---
 
 # 🦀 Rust
 
+## Check Rust Version
+
 ```bash
 docker run --rm rust:latest rustc --version
+```
+
+## Open Rust Container
+
+```bash
+docker run -it --rm rust:latest bash
 ```
 
 ---
 
 # 🌍 Nginx
+
+## Run Nginx
 
 ```bash
 docker run -d \
@@ -185,12 +313,18 @@ docker run -d \
 
 ---
 
-# 🔧 Useful Commands
+# 🔧 Useful Docker Commands
 
-## List Containers
+## List Running Containers
 
 ```bash
 docker ps
+```
+
+## List All Containers
+
+```bash
+docker ps -a
 ```
 
 ## List Images
@@ -217,10 +351,28 @@ docker exec -it container_name bash
 docker stop container_name
 ```
 
+## Start Container
+
+```bash
+docker start container_name
+```
+
+## Restart Container
+
+```bash
+docker restart container_name
+```
+
 ## Remove Container
 
 ```bash
 docker rm -f container_name
+```
+
+## Remove Image
+
+```bash
+docker rmi image_name
 ```
 
 ## Remove Unused Resources
@@ -228,3 +380,21 @@ docker rm -f container_name
 ```bash
 docker system prune -a
 ```
+
+## Remove Unused Volumes
+
+```bash
+docker volume prune
+```
+
+## Remove Unused Networks
+
+```bash
+docker network prune
+```
+
+---
+
+## 👨‍💻 Author
+
+**KNR-Smey**
