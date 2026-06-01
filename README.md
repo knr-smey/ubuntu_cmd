@@ -734,6 +734,63 @@ tar -cJvf archive.tar.xz folder/
 # Extract TAR.XZ archive
 tar -xJvf archive.tar.xz
 ```
+---
+
+## Package Management (dpkg)
+
+### Install .deb Package
+
+```bash
+sudo dpkg -i package.deb
+```
+
+### Remove Package
+
+```bash
+sudo dpkg -r package_name
+```
+
+### Remove Package + Config Files
+
+```bash
+sudo dpkg -P package_name
+```
+
+### List Installed Packages
+
+```bash
+dpkg -l
+```
+
+### Search Installed Package
+
+```bash
+dpkg -l | grep package_name
+```
+
+### Show Package Information
+
+```bash
+dpkg -s package_name
+```
+
+### List Files Installed by Package
+
+```bash
+dpkg -L package_name
+```
+
+### Find Which Package Owns a File
+
+```bash
+dpkg -S /usr/bin/code
+```
+
+### Fix Missing Dependencies
+
+```bash
+sudo apt --fix-broken install
+```
 
 ---
 
@@ -810,7 +867,6 @@ sudo reboot
 ```bash
 sudo shutdown now
 ```
-
 ---
 
 # 👨‍💻 Author
