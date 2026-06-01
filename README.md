@@ -32,12 +32,96 @@ wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.de
 sudo apt update && sudo snap install code --classic
 ```
 
+### Check Version
+
+```bash
+code --version
+```
+
+### Remove VS Code
+
+```bash
+sudo snap remove code
+```
+
+---
+
 ## Install Telegram
 
 ```bash
 sudo apt update && sudo snap install telegram-desktop
 ```
 
+### Launch Telegram
+
+```bash
+telegram-desktop
+```
+
+### Remove Telegram
+
+```bash
+sudo snap remove telegram-desktop
+```
+
+---
+
+## 🛡️ Install ClamAV
+
+### Install ClamAV
+
+```bash
+sudo apt update && sudo apt install clamav clamav-daemon -y
+```
+
+### Check Version
+
+```bash
+clamscan --version
+```
+
+### Update Virus Database
+
+```bash
+sudo freshclam
+```
+
+### Scan Home Directory
+
+```bash
+clamscan -r ~/ --bell -i
+```
+
+### Scan Entire System
+
+```bash
+sudo clamscan -r / --bell -i
+```
+
+### Start ClamAV Service
+
+```bash
+sudo systemctl start clamav-daemon
+```
+
+### Enable ClamAV on Boot
+
+```bash
+sudo systemctl enable clamav-daemon
+```
+
+### Check Service Status
+
+```bash
+sudo systemctl status clamav-daemon
+```
+
+### Remove ClamAV
+
+```bash
+sudo apt remove clamav clamav-daemon -y
+sudo apt autoremove -y
+```
 ---
 
 # 🚀 Programming Languages & Package Managers
