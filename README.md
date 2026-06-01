@@ -43,7 +43,48 @@ code --version
 ```bash
 sudo snap remove code
 ```
+## Install pgAdmin 4 (Local Machine)
 
+### Install Required Packages
+
+```bash
+sudo apt update
+sudo apt install curl ca-certificates gnupg -y
+```
+
+### Add pgAdmin Repository Key
+
+```bash
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | \
+sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+```
+
+### Add Repository
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" | \
+sudo tee /etc/apt/sources.list.d/pgadmin4.list
+```
+
+### Install pgAdmin Desktop
+
+```bash
+sudo apt update
+sudo apt install pgadmin4-desktop -y
+```
+
+### Launch pgAdmin
+
+```bash
+pgadmin4
+```
+
+### Remove pgAdmin
+
+```bash
+sudo apt remove pgadmin4-desktop -y
+sudo apt autoremove -y
+```
 ---
 
 ## Install Telegram
