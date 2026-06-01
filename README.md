@@ -85,6 +85,245 @@ pip3 --version
 
 ---
 
+# 🔄 Version Management
+
+## Node.js (NVM)
+
+Install NVM:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+source ~/.bashrc
+```
+
+Install Versions:
+
+```bash
+nvm install 20
+nvm install 22
+```
+
+List Versions:
+
+```bash
+nvm ls
+```
+
+Switch Version:
+
+```bash
+nvm use 20
+nvm use 22
+```
+
+Default Version:
+
+```bash
+nvm alias default 22
+```
+
+---
+
+## Python (Pyenv)
+
+Install Versions:
+
+```bash
+pyenv install 3.11
+pyenv install 3.12
+```
+
+List Versions:
+
+```bash
+pyenv versions
+```
+
+Global Version:
+
+```bash
+pyenv global 3.12
+```
+
+Project Version:
+
+```bash
+pyenv local 3.11
+```
+
+---
+
+## PHP
+
+Show Installed Versions:
+
+```bash
+update-alternatives --list php
+```
+
+Switch Version:
+
+```bash
+sudo update-alternatives --config php
+```
+
+Check Version:
+
+```bash
+php -v
+```
+
+---
+
+## Flutter (FVM)
+
+Install FVM:
+
+```bash
+dart pub global activate fvm
+```
+
+Install Flutter Version:
+
+```bash
+fvm install 3.32.0
+```
+
+Use Version:
+
+```bash
+fvm use 3.32.0
+```
+
+List Versions:
+
+```bash
+fvm list
+```
+
+---
+
+## Java (SDKMAN)
+
+Install SDKMAN:
+
+```bash
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+Install Versions:
+
+```bash
+sdk install java 21-tem
+sdk install java 17-tem
+```
+
+Switch Version:
+
+```bash
+sdk use java 21-tem
+```
+
+Default Version:
+
+```bash
+sdk default java 21-tem
+```
+
+---
+
+## Rust (Rustup)
+
+Install Toolchain:
+
+```bash
+rustup install stable
+rustup install nightly
+```
+
+List Toolchains:
+
+```bash
+rustup toolchain list
+```
+
+Switch Version:
+
+```bash
+rustup default stable
+rustup default nightly
+```
+
+---
+
+## Docker (Version Isolation)
+
+Instead of switching versions globally, run the version you need:
+
+### Node.js
+
+```bash
+docker run --rm node:20 node -v
+docker run --rm node:22 node -v
+```
+
+### Python
+
+```bash
+docker run --rm python:3.11 python --version
+docker run --rm python:3.12 python --version
+```
+
+### PHP
+
+```bash
+docker run --rm php:8.1 php -v
+docker run --rm php:8.4 php -v
+```
+
+### Composer
+
+```bash
+docker run --rm composer --version
+```
+
+### MySQL
+
+```bash
+docker run -d --name mysql8 -e MYSQL_ROOT_PASSWORD=root mysql:8
+```
+
+### PostgreSQL
+
+```bash
+docker run -d --name postgres17 -e POSTGRES_PASSWORD=root postgres:17
+```
+
+---
+
+## Recommended Setup
+
+```text
+Git        -> Ubuntu
+VS Code    -> Ubuntu
+Chrome     -> Ubuntu
+Docker     -> Ubuntu
+
+Node.js    -> NVM
+Python     -> Pyenv
+PHP        -> Docker or update-alternatives
+Flutter    -> FVM
+Java       -> SDKMAN
+Rust       -> Rustup
+
+MySQL      -> Docker
+PostgreSQL -> Docker
+MongoDB    -> Docker
+Redis      -> Docker
+```
+---
+
 ## Install PHP
 
 ```bash
