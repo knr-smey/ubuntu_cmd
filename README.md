@@ -143,7 +143,35 @@ tar -cvf archive.tar folder/
 # Extract tar archive
 tar -xvf archive.tar
 ```
+## Install Docker
 
+```bash
+sudo apt update && sudo apt install docker.io -y
+```
+
+## Start Docker
+
+```bash
+sudo systemctl start docker
+```
+
+## Enable Docker on Boot
+
+```bash
+sudo systemctl enable docker
+```
+
+## Check Docker Version
+
+```bash
+docker --version
+```
+
+## Test Docker
+
+```bash
+sudo docker run hello-world
+```
 
 ## Author
 KNR-Smey
