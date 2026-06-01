@@ -1,43 +1,68 @@
-# Ubuntu CMD
+# Ubuntu CMD 🚀
 
 A collection of Ubuntu command notes and scripts.
 
-## Features
-- Linux commands
-- Bash scripts
-- Ubuntu tips
+## 📋 Table of Contents
+
+* Browsers
+* Development Tools
+* VPN & Network
+* Docker & Containers
+* Web Servers
+* File & Folder Commands
+* System Commands
+
+---
+
+# 🌐 Browsers
 
 ## Install Google Chrome
 
 ```bash
 wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install -y ./google-chrome-stable_current_amd64.deb
 ```
+
+---
+
+# 💻 Development Tools
+
 ## Install VS Code
 
 ```bash
 sudo apt update && sudo snap install code --classic
 ```
+
 ## Install Telegram
 
 ```bash
 sudo apt update && sudo snap install telegram-desktop
 ```
-## Install Open - VPN
+
+---
+
+# 🔒 VPN & Network
+
+## Install OpenVPN
 
 ```bash
 sudo apt update && sudo apt install openvpn -y
 ```
-## Connect to VPN
-Place your `.ovpn` file in a folder, for example:
+
+## Create VPN Folder
 
 ```bash
 mkdir -p ~/vpn
 ```
 
-Connect:
+## Connect VPN
+
 ```bash
 sudo openvpn --config ~/vpn/myvpn.ovpn
 ```
+
+---
+
+# 🐳 Docker & Containers
 
 ## Install Docker
 
@@ -62,11 +87,24 @@ sudo systemctl enable docker
 ```bash
 docker --version
 ```
+
 ## Test Docker
 
 ```bash
 sudo docker run hello-world
 ```
+
+## Run Docker Without sudo
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+---
+
+# 🌍 Web Servers
+
 ## Install Apache, PHP, MySQL
 
 ```bash
@@ -102,112 +140,240 @@ sudo apt remove apache2 php mysql-server -y
 sudo apt autoremove -y
 ```
 
-## Linux Folder & File Commands
+---
+
+# 📁 File & Folder Commands
 
 ```bash
-# Create a folder
-mkdir folder
-
-# Create nested folders (parents automatically)
-mkdir -p a/b/c
-
-# Show files and folders
-ls
-
-# Show all files including hidden ones
-ls -la
-
-# Enter a folder
-cd folder
-
-# Go back one folder
-cd ..
-
-# Go to home folder
-cd ~
-
-# Go to root folder
-cd /
-
-# Show current folder path
+# Show current directory
 pwd
 
-# Create an empty file
-touch file.txt
+# List files and folders
+ls
 
-# Copy a file
-cp file.txt backup.txt
+# List all files including hidden
+ls -la
 
-# Move or rename a file
-mv old.txt new.txt
+# List files with sizes
+ls -lh
 
-# Move file to another folder
-mv file.txt folder/
+# Enter folder
+cd folder
 
-# Delete a file
-rm file.txt
+# Go back one level
+cd ..
 
-# Delete an empty folder
+# Go to home directory
+cd ~
+
+# Go to root directory
+cd /
+
+# Create folder
+mkdir folder
+
+# Create nested folders
+mkdir -p folder/subfolder
+
+# Remove empty folder
 rmdir folder
 
-# Delete a folder and its contents
+# Remove folder and contents
 rm -r folder
 
-# Force delete folder and contents
+# Force remove folder and contents
 rm -rf folder
 
-# Search for a file
+# Create file
+touch file.txt
+
+# View file contents
+cat file.txt
+
+# Read file page by page
+less file.txt
+
+# First 10 lines
+head file.txt
+
+# Last 10 lines
+tail file.txt
+
+# Monitor file changes
+tail -f file.log
+
+# Copy file
+cp file.txt backup.txt
+
+# Copy folder
+cp -r folder backup_folder
+
+# Move file
+mv file.txt folder/
+
+# Rename file
+mv old.txt new.txt
+
+# Delete file
+rm file.txt
+
+# Search for file
 find . -name "file.txt"
 
-# Show folder tree structure
+# Search for folder
+find . -type d -name "folder"
+
+# Search text in file
+grep "text" file.txt
+
+# Search text recursively
+grep -r "text" .
+
+# Show directory tree
 tree
 
-# Show disk usage of folders
+# Show folder size
+du -sh folder
+
+# Show all folder sizes
 du -sh *
 
 # Show free disk space
 df -h
 
-# Show hidden files only
-ls -d .*
+# Show mounted drives
+mount
 
-# Create a symbolic link
+# Create symbolic link
 ln -s target link
 
-# Change file permissions
+# Change permissions
 chmod 755 file.sh
 
-# Change file owner
+# Make file executable
+chmod +x script.sh
+
+# Change owner
 sudo chown user:user file.txt
 
-# View file contents
-cat file.txt
+# Show file information
+stat file.txt
 
-# View large file page by page
-less file.txt
+# Compare files
+diff file1.txt file2.txt
 
-# View first 10 lines
-head file.txt
+# Count lines, words, characters
+wc file.txt
 
-# View last 10 lines
-tail file.txt
+# Sort file content
+sort file.txt
 
-# Monitor file changes live
-tail -f logfile.log
+# Remove duplicate lines
+uniq file.txt
 
-# Create a zip archive
+# Create ZIP archive
 zip -r archive.zip folder/
 
-# Extract zip archive
+# Extract ZIP archive
 unzip archive.zip
 
-# Create tar archive
+# Create TAR archive
 tar -cvf archive.tar folder/
 
-# Extract tar archive
+# Extract TAR archive
 tar -xvf archive.tar
+
+# Create TAR.GZ archive
+tar -czvf archive.tar.gz folder/
+
+# Extract TAR.GZ archive
+tar -xzvf archive.tar.gz
+
+# Create TAR.XZ archive
+tar -cJvf archive.tar.xz folder/
+
+# Extract TAR.XZ archive
+tar -xJvf archive.tar.xz
 ```
 
+---
 
-## Author
-KNR-Smey
+# ⚙️ System Commands
+
+## Update Packages
+
+```bash
+sudo apt update
+```
+
+## Upgrade Packages
+
+```bash
+sudo apt upgrade -y
+```
+
+## Remove Unused Packages
+
+```bash
+sudo apt autoremove -y
+```
+
+## Show Ubuntu Version
+
+```bash
+lsb_release -a
+```
+
+## Show Kernel Version
+
+```bash
+uname -r
+```
+
+## Show CPU Information
+
+```bash
+lscpu
+```
+
+## Show Memory Usage
+
+```bash
+free -h
+```
+
+## Show Disk Usage
+
+```bash
+df -h
+```
+
+## Show Running Processes
+
+```bash
+ps aux
+```
+
+## Monitor System
+
+```bash
+htop
+```
+
+## Reboot System
+
+```bash
+sudo reboot
+```
+
+## Shutdown System
+
+```bash
+sudo shutdown now
+```
+
+---
+
+# 👨‍💻 Author
+
+**KNR-Smey**
